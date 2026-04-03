@@ -1,0 +1,435 @@
+/* ===========================
+       CSS CUSTOM PROPERTIES
+    =========================== */
+:root {
+    --bg: #f5f0e8;
+    --paper: #fffdf6;
+    --ink: #1a1410;
+    --ink-light: #4a3f35;
+    --red: #c0392b;
+    --blue: #2471a3;
+    --green: #1e8449;
+    --line: #d4c9b0;
+    --shadow: rgba(0, 0, 0, 0.12);
+}
+
+/* ===========================
+       RESET & BASE
+    =========================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Courier Prime', monospace;
+    background-color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background-image:
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 27px,
+            var(--line) 27px,
+            var(--line) 28px);
+}
+
+/* ===========================
+       NOTEBOOK CARD
+    =========================== */
+.notebook {
+    background: var(--paper);
+    width: 100%;
+    max-width: 600px;
+    height: 700px;
+    border-radius: 6px;
+    box-shadow:
+        3px 3px 0 #c9bfa8,
+        6px 6px 0 #b8ae98,
+        0 20px 60px var(--shadow);
+    position: relative;
+    overflow: hidden;
+    padding: 3rem 3rem 2.5rem 4.5rem;
+    border: 1px solid #d4c9b0;
+    align-items: center;
+}
+
+ /* red margin line */
+.notebook::before {
+    content: '';
+    position: absolute;
+    left: 3.2rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(192, 57, 43, 0.4);
+}
+
+/* hole punches  */
+.notebook::after {
+    content: '';
+    position: absolute;
+    left: 1.2rem;
+    top: 0;
+    bottom: 0;
+    width: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    background:
+        radial-gradient(circle at 50% 20%, #ccc 38%, transparent 40%),
+        radial-gradient(circle at 50% 50%, #ccc 38%, transparent 40%),
+        radial-gradient(circle at 50% 80%, #ccc 38%, transparent 40%);
+} 
+
+/* ===========================
+       TITLE
+    =========================== */
+.title-area {
+    margin-bottom: 1.8rem;
+}
+
+.title-area h1 {
+    font-family: 'Caveat', cursive;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+
+.title-area h1 span {
+    color: var(--red);
+}
+
+.subtitle {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: var(--ink-light);
+    margin-top: 0.3rem;
+    font-style: italic;
+}
+
+/* underline drawn below title */
+.drawn-line {
+    width: 100%;
+    height: 2px;
+    background: var(--ink);
+    margin-top: 0.7rem;
+    border-radius: 2px;
+    position: relative;
+    transform: rotate(-0.3deg);
+}
+
+/* ===========================
+       PASSWORD OUTPUT
+    =========================== */
+.output-box {
+    background: transparent;
+    border: none;
+    border-bottom: 2.5px solid var(--ink);
+    width: 100%;
+    font-family: 'Special Elite', cursive;
+    font-size: 1.25rem;
+    color: var(--blue);
+    letter-spacing: 2px;
+    padding: 0.6rem 0;
+    outline: none;
+    cursor: text;
+    transition: border-color 0.2s;
+    word-break: break-all;
+    min-height: 2.5rem;
+}
+
+.output-box:focus {
+    border-color: var(--blue);
+}
+
+.output-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+    color: var(--ink-light);
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+/* ===========================
+       STRENGTH METER
+    =========================== */
+.strength-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.6rem;
+    margin-bottom: 1.6rem;
+}
+
+.strength-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+    color: var(--ink-light);
+    white-space: nowrap;
+}
+
+.bars {
+    display: flex;
+    gap: 4px;
+}
+
+.bar {
+    width: 28px;
+    height: 8px;
+    border: 1.5px solid var(--ink-light);
+    border-radius: 2px;
+    background: transparent;
+    transition: background 0.3s;
+}
+
+.bar.weak {
+    background: var(--red);
+    border-color: var(--red);
+}
+
+.bar.medium {
+    background: #e67e22;
+    border-color: #e67e22;
+}
+
+.bar.strong {
+    background: var(--green);
+    border-color: var(--green);
+}
+
+.strength-word {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink-light);
+    transition: color 0.3s;
+}
+
+/* ===========================
+       LENGTH SLIDER
+    =========================== */
+.section-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.section-label span {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--red);
+}
+
+.slider-wrap {
+    margin-bottom: 1.6rem;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 3px;
+    background: var(--ink);
+    outline: none;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2.5px solid var(--ink);
+    cursor: pointer;
+    transition: transform 0.15s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.25);
+}
+
+/* ===========================
+       CHECKBOXES (options)
+    =========================== */
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 1rem;
+    margin-bottom: 1.8rem;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.option input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--ink);
+    border-radius: 2px;
+    position: relative;
+    flex-shrink: 0;
+    background: transparent;
+    transition: background 0.2s;
+}
+
+/* hand-drawn tick */
+.checkbox-box::after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 2px;
+    top: 5px;
+    width: 5px;
+    height: 3px;
+    border-left: 2.5px solid var(--paper);
+    border-bottom: 2.5px solid var(--paper);
+    transform: rotate(-45deg);
+}
+
+.option input:checked+.checkbox-box {
+    background: var(--ink);
+}
+
+.option input:checked+.checkbox-box::after {
+    display: block;
+}
+
+.option-text {
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+    color: var(--ink);
+}
+
+/* ===========================
+       BUTTONS
+    =========================== */
+.btn-row {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.btn {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 0.6rem 1.4rem;
+    border: 2.5px solid var(--ink);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: transform 0.12s, box-shadow 0.12s, background 0.15s;
+    position: relative;
+    top: 0;
+    box-shadow: 3px 3px 0 var(--ink);
+    letter-spacing: 0.5px;
+}
+
+.btn:active {
+    top: 2px;
+    box-shadow: 1px 1px 0 var(--ink);
+}
+
+.btn-generate {
+    background: var(--ink);
+    color: var(--paper);
+    flex: 1;
+}
+
+.btn-generate:hover {
+    background: #2c2218;
+}
+
+.btn-copy {
+    background: transparent;
+    color: var(--ink);
+}
+
+.btn-copy:hover {
+    background: #ede8dc;
+}
+
+.btn-copy.copied {
+    border-color: var(--green);
+    color: var(--green);
+    box-shadow: 3px 3px 0 var(--green);
+}
+
+/* ===========================
+       DOODLE DECORATION
+    =========================== */
+.doodle {
+    font-family: 'Caveat', cursive;
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+    text-align: right;
+    margin-top: 1.5rem;
+    font-style: italic;
+    transform: rotate(0.5deg);
+}
+
+/* ===========================
+       ANIMATIONS
+    =========================== */
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notebook {
+    animation: fadeSlide 0.5s ease both;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.output-box.animate {
+    animation: pop 0.25s ease;
+}
+
+
+@media (max-width:667px) {
+    .notebook{
+        width: 400px;
+        height: 700px;
+    }
+}

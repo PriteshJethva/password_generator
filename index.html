@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Generator</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+
+    <div class="notebook">
+
+        <!-- Title -->
+        <div class="title-area">
+            <h1>Pass<span>word</span><br>Generator</h1>
+            <div class="drawn-line"></div>
+        </div>
+
+        <!-- Output -->
+        <span class="output-label">generated password ↓</span>
+        <div class="output-box" id="output" tabindex="0">Click Generate...</div>
+
+        <!-- Strength meter -->
+        <div class="strength-row">
+            <span class="strength-label">strength:</span>
+            <div class="bars" id="bars">
+                <div class="bar" id="b1"></div>
+                <div class="bar" id="b2"></div>
+                <div class="bar" id="b3"></div>
+                <div class="bar" id="b4"></div>
+            </div>
+            <span class="strength-word" id="strengthWord">—</span>
+        </div>
+
+        <!-- Length Slider -->
+        <div class="slider-wrap">
+            <div class="section-label">
+                length
+                <span id="lengthVal">16</span>
+            </div>
+            <input type="range" id="lengthSlider" min="6" max="64" value="16" />
+        </div>
+
+        <!-- Options -->
+        <div class="section-label" style="margin-bottom:.7rem">include:</div>
+        <div class="options-grid">
+
+            <label class="option">
+                <input type="checkbox" id="optUpper" checked />
+                <div class="checkbox-box"></div>
+                <span class="option-text">A – Z uppercase</span>
+            </label>
+
+            <label class="option">
+                <input type="checkbox" id="optLower" checked />
+                <div class="checkbox-box"></div>
+                <span class="option-text">a – z lowercase</span>
+            </label>
+
+            <label class="option">
+                <input type="checkbox" id="optNumbers" checked />
+                <div class="checkbox-box"></div>
+                <span class="option-text">0 – 9 numbers</span>
+            </label>
+
+            <label class="option">
+                <input type="checkbox" id="optSymbols" />
+                <div class="checkbox-box"></div>
+                <span class="option-text">!@#$ symbols</span>
+            </label>
+
+        </div>
+
+        <!-- Buttons -->
+        <div class="btn-row">
+            <button class="btn btn-generate" id="btnGenerate">✎ Generate</button>
+            <button class="btn btn-copy" id="btnCopy">⎘ Copy</button>
+        </div>
+
+        <p class="doodle">remember to store it somewhere safe!</p>
+
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
